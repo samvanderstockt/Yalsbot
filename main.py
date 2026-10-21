@@ -26,8 +26,12 @@ async def on_member_join(member):
 
 @bot.event
 async def on_message(message):
-    if massage.author == bot.user:
+    if message.author == bot.user:
         return
+
+    if "neger" in message.content.lower():
+        await message.delete
+        await message.channel.send(f"{message.author.mention}, - Geen racistisch taalgebruik in deze server. ")
 
 
 bot.run(token, log_handler=handler, log_level=logging.DEBUG)
