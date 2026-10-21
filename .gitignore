@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+discord.log
+__pycache__/
+*.py[cod]
