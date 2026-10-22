@@ -59,12 +59,29 @@ async def on_message(message):
     if "chatgpt" in message.content.lower():
         await message.channel.send(f"{message.author.mention}, - Ben je een boomer ofzo chatgpt was nieuw in 2020.")
 
+    if "sam" in message.content.lower():
+        await message.channel.send(f"{message.author.mention}, - Sam is afwezig as hij niet binnen de 5 minuten reageert")
+
+    if "yalsify" in message.content.lower():
+        await message.channel.send(f"{message.author.mention}, - Yalsify is super nice.")
+
+    if "victorini" in message.content.lower():
+        await message.channel.send(f"{message.author.mention}, - Victorini is wss pita met look aan het eten")
+
+    if "thomas" in message.content.lower():
+        await message.channel.send(f"{message.author.mention}, - Thomas is wss MineCraft aan het grinden")
+
+ 
+
     if "appelmoes" in message.content.lower():
         await message.channel.send(f"{message.author.mention}, - APPELMOES??? I LOVE APPELMOES.")
 
     if "kanker" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{message.author.mention}, - Niet schelden met ziektes in deze server.")
+
+   
+    
 
 
     await bot.process_commands(message)
