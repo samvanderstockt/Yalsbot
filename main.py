@@ -1,3 +1,5 @@
+from email.mime import message
+
 import discord 
 from discord.ext import commands
 import logging
@@ -15,6 +17,8 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+mod_role= "trial mod"
+
 
 @bot.event
 async def on_ready():
@@ -30,8 +34,21 @@ async def on_message(message):
         return
 
     if "neger" in message.content.lower():
-        await message.delete
+        await message.delete()
         await message.channel.send(f"{message.author.mention}, - Geen racistisch taalgebruik in deze server. ")
+
+    if "nigger" in message.content.lower():
+      await message.delete()
+      await message.channel.send(f"{message.author.mention}, - Geen racistisch taalgebruik in deze server. ")
+
+    await bot.process_commands(message)
+
+
+@bot.command()
+async def bark(ctx):
+    await ctx.send(f"Arf Arf {ctx.author.mention}!")
+
+
 
 
 bot.run(token, log_handler=handler, log_level=logging.DEBUG)
