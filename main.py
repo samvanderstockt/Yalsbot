@@ -17,7 +17,11 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-mod_role= "trial mod"
+mod_roles = {"trial mod", "head devs"}
+
+
+def normalize_role_name(name):
+    return "".join(character for character in name.casefold() if character.isalnum())
 
 
 @bot.event
@@ -41,12 +45,48 @@ async def on_message(message):
       await message.delete()
       await message.channel.send(f"{message.author.mention}, - Geen racistisch taalgebruik in deze server. ")
 
+    if "kankerhomo" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{message.author.mention}, - Niet schelden met ziektes in deze server.")
+
+    if "kankerneger" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{message.author.mention}, - Niet schelden met ziektes en geen racistisch taalgebruik in deze server.")
+
+    if "chihuahua" in message.content.lower():
+        await message.channel.send(f"{message.author.mention}, - Ik Chihuahua Jij Chihuahua Wij chihuahua.")
+
+    if "chatgpt" in message.content.lower():
+        await message.channel.send(f"{message.author.mention}, - Ben je een boomer ofzo chatgpt was nieuw in 2020.")
+
+    if "appelmoes" in message.content.lower():
+        await message.channel.send(f"{message.author.mention}, - APPELMOES??? I LOVE APPELMOES.")
+
+    if "kanker" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{message.author.mention}, - Niet schelden met ziektes in deze server.")
+
+
     await bot.process_commands(message)
+
 
 
 @bot.command()
 async def bark(ctx):
     await ctx.send(f"Arf Arf {ctx.author.mention}!")
+
+@bot.command()
+async def cap(ctx):
+    await ctx.send(f"Cap cap capperdecap")
+
+@bot.command()
+async def warn(ctx, member: discord.Member):
+    allowed_roles = {normalize_role_name(name) for name in mod_roles}
+    if any(normalize_role_name(role.name) in allowed_roles for role in ctx.author.roles):
+        await ctx.send(f"{member.mention} has been warned by {ctx.author.mention}.")
+    else:
+        await ctx.send(f"{ctx.author.mention}, you do not have permission to warn members.")
+
 
 
 
