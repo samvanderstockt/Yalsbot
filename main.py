@@ -37,6 +37,12 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
+    if "Yals" in message.content.lower():
+        await message.channel.send(f"https://yals.netlify.app")
+
+    if "Yalsify" in message.content.lower():
+        await message.channel.send(f)
+
     if "neger" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{message.author.mention}, - Geen racistisch taalgebruik in deze server. ")
@@ -71,14 +77,13 @@ async def on_message(message):
     if "thomas" in message.content.lower():
         await message.channel.send(f"{message.author.mention}, - Thomas is wss MineCraft aan het grinden")
 
- 
-
     if "appelmoes" in message.content.lower():
         await message.channel.send(f"{message.author.mention}, - APPELMOES??? I LOVE APPELMOES.")
 
     if "kanker" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{message.author.mention}, - Niet schelden met ziektes in deze server.")
+
 
    
     
